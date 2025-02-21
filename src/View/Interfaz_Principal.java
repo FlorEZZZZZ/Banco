@@ -13,11 +13,10 @@ import Modelo.Contructor;
 public class Interfaz_Principal extends javax.swing.JFrame {
 
    
-    private Contructor usuario;
+    private Contructor usuarios;
     
     public Interfaz_Principal() {
         initComponents();
-        txSaludo.setText(usuario.nombreTitular);
         
     }
 
