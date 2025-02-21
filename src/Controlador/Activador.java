@@ -4,7 +4,7 @@
  */
 package Controlador;
 
-import Models.Primer_Paso;
+import View.Primer_Paso;
 
 /**
  *

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Models;
+package View;
 
-import Models.Ingreso_Usuarios;
-import View.Contructor;
+import View.Ingreso_Usuarios;
+import Modelo.Contructor;
 
 public class Primer_Paso extends javax.swing.JFrame {
 
