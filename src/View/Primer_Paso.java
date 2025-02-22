@@ -84,7 +84,7 @@ public class Primer_Paso extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        Contructor usuarioEjemplo = new Contructor("Ejemplo", "Ejemplo", 123456, 1, "password");
+        Contructor usuarioEjemplo = new Contructor("Ejemplo", "Ejemplo", 123456, 1, "password", 0);
         Ingreso_Usuarios iu = new Ingreso_Usuarios(usuarioEjemplo);
         iu.setVisible(true);
         this.dispose();

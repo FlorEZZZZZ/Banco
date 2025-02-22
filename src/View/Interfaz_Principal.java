@@ -39,6 +39,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         btAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ltUsuarios = new javax.swing.JList<>();
+        btCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +61,13 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(ltUsuarios);
 
+        btCerrarSesion.setText("Cerrar Sesión");
+        btCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCerrarSesionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -67,7 +75,9 @@ public class Interfaz_Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txSaludo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btCerrarSesion)
+                .addGap(18, 18, 18))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -82,8 +92,10 @@ public class Interfaz_Principal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txSaludo)
-                .addGap(53, 53, 53)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txSaludo)
+                    .addComponent(btCerrarSesion))
+                .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -132,6 +144,16 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btImprimirActionPerformed
 
+    private void btCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarSesionActionPerformed
+
+        Contructor usuarioEjemplo = new Contructor("Ejemplo", "Ejemplo", 123456, 1, "password", 0);
+        Ingreso_Usuarios iu = new Ingreso_Usuarios(usuarioEjemplo);
+        iu.setVisible(true);
+        
+        this.dispose();
+
+    }//GEN-LAST:event_btCerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -139,6 +161,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregar;
+    private javax.swing.JButton btCerrarSesion;
     private javax.swing.JButton btImprimir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

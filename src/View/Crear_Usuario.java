@@ -17,8 +17,9 @@ public class Crear_Usuario extends javax.swing.JFrame {
     public String contrasena;
     public int numeroCuenta;
     public int tipoCuenta;
+    public int saldo;
     
-    public Contructor ct = new Contructor(nombreTitular, apellidoTitular, numeroCuenta, tipoCuenta, contrasena);
+    public Contructor ct = new Contructor(nombreTitular, apellidoTitular, numeroCuenta, tipoCuenta, contrasena, saldo);
     
     
     public Crear_Usuario() {
@@ -170,7 +171,7 @@ public class Crear_Usuario extends javax.swing.JFrame {
         
         }
         
-        ct = new Contructor(nombreTitular, apellidoTitular, numeroCuenta, tipoCuenta, contrasena);
+        ct = new Contructor(nombreTitular, apellidoTitular, numeroCuenta, tipoCuenta, contrasena, saldo);
         ct.agregarUsuario(ct);
 
         Ingreso_Usuarios ui = new Ingreso_Usuarios(ct);

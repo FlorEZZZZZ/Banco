@@ -4,6 +4,8 @@
  */
 package View;
 
+import Modelo.Contructor;
+
 /**
  *
  * @author APRENDIZ
@@ -27,18 +29,32 @@ public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btCerrarSesion.setText("Cerrar Sesión");
+        btCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 601, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(478, Short.MAX_VALUE)
+                .addComponent(btCerrarSesion)
+                .addGap(24, 24, 24))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btCerrarSesion)
+                .addContainerGap(271, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -55,12 +71,23 @@ public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCerrarSesionActionPerformed
+
+        Contructor usuarioEjemplo = new Contructor("Ejemplo", "Ejemplo", 123456, 1, "password", 0);
+        Ingreso_Usuarios iu = new Ingreso_Usuarios(usuarioEjemplo);
+        iu.setVisible(true);
+        
+        this.dispose();
+
+    }//GEN-LAST:event_btCerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCerrarSesion;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,6 +18,7 @@ public class Contructor {
     public int numeroCuenta;
     public int tipoCuenta;
     public String contrasena;
+    public int Saldo;
     private static List<Contructor> usuarios = new ArrayList<>();
     
 
@@ -27,13 +28,24 @@ public class Contructor {
         usuarios.add(usuario);
         JOptionPane.showMessageDialog(null, "Usuario agregado exitosamente!");
     }
-    
-    public Contructor(String nombreTitular, String apellidoTitular, int numeroCuenta, int tipoCuenta, String contrasena) {
+
+    public Contructor(String nombreTitular, String apellidoTitular, int numeroCuenta, int tipoCuenta, String contrasena, int Saldo) {
         this.nombreTitular = nombreTitular;
         this.apellidoTitular = apellidoTitular;
         this.numeroCuenta = numeroCuenta;
         this.tipoCuenta = tipoCuenta;
         this.contrasena = contrasena;
+        this.Saldo = Saldo;
+    }
+    
+   
+
+    public int getSaldo() {
+        return Saldo;
+    }
+
+    public void setSaldo(int Saldo) {
+        this.Saldo = Saldo;
     }
     
 
@@ -113,7 +125,7 @@ public static List<String> mostrarUsuarios() {
     
     public static void agregarUsuarioPorDefecto() {
         // acá creo un usuario "Administrador" con el tipo de cuenta 3
-        Contructor usuarioPorDefecto = new Contructor("Admin", "Admin", 00000000, 3, "Florez1");
+        Contructor usuarioPorDefecto = new Contructor("Admin", "Admin", 00000000, 3, "Florez1", 1000000);
         
         usuarios.add(usuarioPorDefecto);
          }
