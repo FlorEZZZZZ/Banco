@@ -19,6 +19,7 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
     this.usuario = ct;
     initComponents();
     
+    
 }
 
     
@@ -32,6 +33,7 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tfNumCuenta = new javax.swing.JTextField();
@@ -40,6 +42,13 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
         btIngresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btCrearUsuario = new javax.swing.JButton();
+        rdAhorro = new javax.swing.JRadioButton();
+        rdCorriente = new javax.swing.JRadioButton();
+        rdAdmin = new javax.swing.JRadioButton();
+
+        buttonGroup1.add(rdAdmin);
+        buttonGroup1.add(rdAhorro);
+        buttonGroup1.add(rdCorriente);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +75,12 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
             }
         });
 
+        rdAhorro.setText("Cuenta Ahorro");
+
+        rdCorriente.setText("Cuenta Corriente");
+
+        rdAdmin.setText("Admin");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,14 +100,24 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btIngresar)
-                                    .addComponent(tfContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(tfContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel4)
+                        .addGap(46, 46, 46)
+                        .addComponent(rdAhorro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btCrearUsuario)))
+                        .addComponent(rdCorriente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rdAdmin))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(btIngresar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btCrearUsuario)))))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,33 +133,60 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tfContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdAhorro)
+                    .addComponent(rdCorriente)
+                    .addComponent(rdAdmin))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(btCrearUsuario))
-                .addGap(37, 37, 37)
+                .addGap(28, 28, 28)
                 .addComponent(btIngresar)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarActionPerformed
-
-         int numCuentaIngresada = Integer.parseInt(tfNumCuenta.getText());
+  
+        int tipoCuenta = 0;
+        
+        if(rdAdmin.isSelected()){
+        
+        tipoCuenta = 3;
+            
+        }else if(rdAhorro.isSelected()){
+        
+        tipoCuenta = 1;
+            
+        }else if(rdCorriente.isSelected()){
+        
+        tipoCuenta = 2;
+            
+        }
+    
+        int numCuentaIngresada = Integer.parseInt(tfNumCuenta.getText());
     String contrasenaIngresada = tfContrasena.getText();
     
     // Validar usuario
-    Contructor usuarioValidado = usuario.validarUsuario(numCuentaIngresada, contrasenaIngresada);
+    Contructor usuarioValidado = usuario.validarUsuario(numCuentaIngresada, contrasenaIngresada, tipoCuenta);
     
-    if (usuarioValidado != null) {
-        // Usuario encontrado, puedes hacer la lógica de ingreso aquí
-        JOptionPane.showMessageDialog(null, "Ingreso exitoso!");
+    if (usuarioValidado != null) {        
         
+        if(tipoCuenta == 3){
         Interfaz_Principal ip = new Interfaz_Principal();
         ip.setVisible(true);
         this.dispose();
+        }else if(tipoCuenta != 3){
+        Interfaz_Principal_Usuario ipu = new Interfaz_Principal_Usuario();
+        ipu.setVisible(true);
+        this.dispose();
+        }
+        
+        
         
     } else {
         // Usuario no encontrado
@@ -157,10 +209,14 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCrearUsuario;
     private javax.swing.JButton btIngresar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton rdAdmin;
+    private javax.swing.JRadioButton rdAhorro;
+    private javax.swing.JRadioButton rdCorriente;
     private javax.swing.JTextField tfContrasena;
     private javax.swing.JTextField tfNumCuenta;
     // End of variables declaration//GEN-END:variables
