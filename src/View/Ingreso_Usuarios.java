@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Ingreso_Usuarios extends javax.swing.JFrame {
 
-     private Contructor usuario;
+     public Contructor usuario;
 
     public Ingreso_Usuarios(Contructor ct) {
     this.usuario = ct;
@@ -152,44 +152,36 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
 
     private void btIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIngresarActionPerformed
   
-        int tipoCuenta = 0;
-        
-        if(rdAdmin.isSelected()){
-        
-        tipoCuenta = 3;
-            
-        }else if(rdAhorro.isSelected()){
-        
-        tipoCuenta = 1;
-            
-        }else if(rdCorriente.isSelected()){
-        
-        tipoCuenta = 2;
-            
-        }
+   int tipoCuenta = 0;
     
-        int numCuentaIngresada = Integer.parseInt(tfNumCuenta.getText());
+    // Determinar el tipo de cuenta según la selección
+    if(rdAdmin.isSelected()){
+        tipoCuenta = 3;
+    } else if(rdAhorro.isSelected()){
+        tipoCuenta = 1;
+    } else if(rdCorriente.isSelected()){
+        tipoCuenta = 2;
+    }
+
+    int numCuentaIngresada = Integer.parseInt(tfNumCuenta.getText());
     String contrasenaIngresada = tfContrasena.getText();
     
-    // Validar usuario
-    Contructor usuarioValidado = usuario.validarUsuario(numCuentaIngresada, contrasenaIngresada, tipoCuenta);
+    // Validar el usuario a partir de la lista estática de usuarios
+    Contructor usuarioValidado = Contructor.validarUsuario(numCuentaIngresada, contrasenaIngresada, tipoCuenta);
     
     if (usuarioValidado != null) {        
-        
+        // Si el usuario es validado, redirigir a la interfaz correspondiente
         if(tipoCuenta == 3){
-        Interfaz_Principal ip = new Interfaz_Principal();
-        ip.setVisible(true);
-        this.dispose();
-        }else if(tipoCuenta != 3){
-        Interfaz_Principal_Usuario ipu = new Interfaz_Principal_Usuario();
-        ipu.setVisible(true);
-        this.dispose();
+            Interfaz_Principal ip = new Interfaz_Principal();
+            ip.setVisible(true);
+        } else {
+            Interfaz_Principal_Usuario ipu = new Interfaz_Principal_Usuario(usuarioValidado);
+            ipu.setVisible(true);
         }
         
-        
-        
+        this.dispose(); // Cerrar el formulario de inicio de sesión
     } else {
-        // Usuario no encontrado
+        // Si el usuario no es encontrado, mostrar un mensaje de error
         JOptionPane.showMessageDialog(null, "Número de cuenta o contraseña incorrectos.");
     }
     }//GEN-LAST:event_btIngresarActionPerformed

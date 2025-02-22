@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author APRENDIZ
- */
 public class Contructor {
     public String nombreTitular;
     public String apellidoTitular;
@@ -20,11 +12,8 @@ public class Contructor {
     public String contrasena;
     public int Saldo;
     private static List<Contructor> usuarios = new ArrayList<>();
-    
-
 
     public void agregarUsuario(Contructor usuario) {
-        
         usuarios.add(usuario);
         JOptionPane.showMessageDialog(null, "Usuario agregado exitosamente!");
     }
@@ -37,8 +26,6 @@ public class Contructor {
         this.contrasena = contrasena;
         this.Saldo = Saldo;
     }
-    
-   
 
     public int getSaldo() {
         return Saldo;
@@ -47,7 +34,6 @@ public class Contructor {
     public void setSaldo(int Saldo) {
         this.Saldo = Saldo;
     }
-    
 
     public String getContrasena() {
         return contrasena;
@@ -88,46 +74,49 @@ public class Contructor {
     public void setTipoCuenta(int tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }
-    
-    public int generarTarjeta(){
-    
-    int numTarjeta =(int) (Math.random() * (10000000 - 1000000 + 1) + 1000000);
-    
+
+    public int generarTarjeta() {
+        int numTarjeta = (int) (Math.random() * (10000000 - 1000000 + 1) + 1000000);
         JOptionPane.showMessageDialog(null, "Su numero de tarjeta es: " + numTarjeta + "\n NO LO PIERDA");
-        
-    return numTarjeta;
+        return numTarjeta;
     }
-    
-public static List<String> mostrarUsuarios() {
-    List<String> resultado = new ArrayList<>();  
-    for (Contructor usuario : usuarios) {
-        String usuarioFinal = String.format("Nombre: %s Apellido: %s Numero Cuenta: %d Tipo de Cuenta: %d Contraseña: %s", 
-            usuario.getNombreTitular(), 
-            usuario.getApellidoTitular(), 
-            usuario.getNumeroCuenta(), 
-            usuario.getTipoCuenta(),  
-            usuario.getContrasena());
-        
-        resultado.add(usuarioFinal);  // Agregar el usuario a la lista
-    }
-    return resultado;
-}
-    
-    
-    public Contructor validarUsuario(int numCuenta, String contrasena, int tipoCuenta) {
-    for (Contructor usuario : usuarios) {
-        if (usuario.getNumeroCuenta() == numCuenta && usuario.getContrasena().equals(contrasena) && usuario.getTipoCuenta() == tipoCuenta) {
-            return usuario; 
+
+    public static List<String> mostrarUsuarios() {
+        List<String> resultado = new ArrayList<>();
+        for (Contructor usuario : usuarios) {
+            String usuarioFinal = String.format("Nombre: %s Apellido: %s Numero Cuenta: %d Tipo de Cuenta: %d Contraseña: %s Saldo: %d", 
+                usuario.getNombreTitular(), 
+                usuario.getApellidoTitular(), 
+                usuario.getNumeroCuenta(), 
+                usuario.getTipoCuenta(),  
+                usuario.getContrasena(),
+                usuario.getSaldo());
+            resultado.add(usuarioFinal);
         }
+        return resultado;
     }
-    return null; 
-}
-    
+
+public static Contructor validarUsuario(int numCuenta, String contrasena, int tipoCuenta) {
+        // Buscar en la lista de usuarios si el número de cuenta y la contraseña coinciden
+        for (Contructor usuario : usuarios) {
+            if (usuario.getNumeroCuenta()== numCuenta && usuario.getContrasena().equals(contrasena) && usuario.getTipoCuenta() == tipoCuenta) {
+                return usuario;  // Retorna el usuario validado
+            }
+        }
+        return null;  // Si no se encuentra, retorna null
+    }
+
     public static void agregarUsuarioPorDefecto() {
-        // acá creo un usuario "Administrador" con el tipo de cuenta 3
         Contructor usuarioPorDefecto = new Contructor("Admin", "Admin", 00000000, 3, "Florez1", 1000000);
-        
         usuarios.add(usuarioPorDefecto);
-         }
-    
+    }
+
+    public static int consultarSaldo(int numCuenta) {
+        for (Contructor usuario : usuarios) {
+            if (numCuenta == usuario.getNumeroCuenta()) {
+                return usuario.getSaldo();
+            }
+        }
+        return 0;  // Retorna 0 si no se encuentra el usuario
+    }
 }

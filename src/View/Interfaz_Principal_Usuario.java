@@ -12,11 +12,16 @@ import Modelo.Contructor;
  */
 public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Interfaz_Principal_Usuario
-     */
-    public Interfaz_Principal_Usuario() {
+    
+    private Contructor usuarioActual;
+    
+    
+    public Interfaz_Principal_Usuario(Contructor usuario) {
+        this.usuarioActual = usuario; // Guardamos al usuario
         initComponents();
+        mostrarSaldo(); 
+        
+        
     }
 
     /**
@@ -30,6 +35,8 @@ public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btCerrarSesion = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        tfSaldo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,12 +47,20 @@ public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Saldo");
+
+        tfSaldo.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(478, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tfSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
                 .addComponent(btCerrarSesion)
                 .addGap(24, 24, 24))
         );
@@ -53,7 +68,10 @@ public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btCerrarSesion)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btCerrarSesion)
+                    .addComponent(jLabel1)
+                    .addComponent(tfSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(271, Short.MAX_VALUE))
         );
 
@@ -81,6 +99,10 @@ public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btCerrarSesionActionPerformed
 
+    private void mostrarSaldo() {
+    int saldo = Contructor.consultarSaldo(usuarioActual.getNumeroCuenta()); // Consultamos el saldo
+    tfSaldo.setText(String.valueOf(saldo));
+    }
     /**
      * @param args the command line arguments
      */
@@ -88,6 +110,8 @@ public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCerrarSesion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField tfSaldo;
     // End of variables declaration//GEN-END:variables
 }
