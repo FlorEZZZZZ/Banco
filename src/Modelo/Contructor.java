@@ -19,9 +19,11 @@ public class Contructor {
     public int tipoCuenta;
     public String contrasena;
     private static List<Contructor> usuarios = new ArrayList<>();
+    
 
 
     public void agregarUsuario(Contructor usuario) {
+        
         usuarios.add(usuario);
         JOptionPane.showMessageDialog(null, "Usuario agregado exitosamente!");
     }
@@ -91,13 +93,21 @@ public class Contructor {
     }
     
     
-    public Contructor validarUsuario(int numCuenta, String contrasena) {
+    public Contructor validarUsuario(int numCuenta, String contrasena, int tipoCuenta) {
     for (Contructor usuario : usuarios) {
-        if (usuario.getNumeroCuenta() == numCuenta && usuario.getContrasena().equals(contrasena)) {
-            return usuario; // Usuario encontrado
+        if (usuario.getNumeroCuenta() == numCuenta && usuario.getContrasena().equals(contrasena) && usuario.getTipoCuenta() == tipoCuenta) {
+            return usuario; // Si encontro el usuario
         }
     }
-    return null; // No se encuentra el usuario
+    return null; // No encontro el usuario
 }
+    
+    public static void agregarUsuarioPorDefecto() {
+        // acá creo un usuario "Administrador" con el tipo de cuenta 3
+        Contructor usuarioPorDefecto = new Contructor("Admin", "Admin", 00000000, 3, "Florez1");
+        
+        // Agregarlo a la lista de usuarios
+        usuarios.add(usuarioPorDefecto);
+         }
     
 }
