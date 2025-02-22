@@ -86,11 +86,20 @@ public class Contructor {
     return numTarjeta;
     }
     
-    public void mostrarUsuarios() {
-        for (Contructor usuario : usuarios) {
-            JOptionPane.showMessageDialog(null, "Usuario: " + usuario.getNombreTitular() + " " + usuario.getApellidoTitular());
-        }
+   public static String mostrarUsuarios() {
+    StringBuilder resultado = new StringBuilder();  
+    for (Contructor usuario : usuarios) {
+        String usuarioFinal = String.format("Nombre: %s Apellido: %s Numero Cuenta: %d Tipo de Cuenta: %d Contraseña: %s", 
+            usuario.getNombreTitular(), 
+            usuario.getApellidoTitular(), 
+            usuario.getNumeroCuenta(), 
+            usuario.getTipoCuenta(),  
+            usuario.getContrasena());
+        
+        resultado.append(usuarioFinal);  
     }
+    return resultado.length() > 0 ? resultado.toString() : null;  
+}
     
     
     public Contructor validarUsuario(int numCuenta, String contrasena, int tipoCuenta) {
