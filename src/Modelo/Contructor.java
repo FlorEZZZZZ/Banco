@@ -86,8 +86,8 @@ public class Contructor {
     return numTarjeta;
     }
     
-   public static String mostrarUsuarios() {
-    StringBuilder resultado = new StringBuilder();  
+public static List<String> mostrarUsuarios() {
+    List<String> resultado = new ArrayList<>();  
     for (Contructor usuario : usuarios) {
         String usuarioFinal = String.format("Nombre: %s Apellido: %s Numero Cuenta: %d Tipo de Cuenta: %d Contraseña: %s", 
             usuario.getNombreTitular(), 
@@ -96,26 +96,25 @@ public class Contructor {
             usuario.getTipoCuenta(),  
             usuario.getContrasena());
         
-        resultado.append(usuarioFinal);  
+        resultado.add(usuarioFinal);  // Agregar el usuario a la lista
     }
-    return resultado.length() > 0 ? resultado.toString() : null;  
+    return resultado;
 }
     
     
     public Contructor validarUsuario(int numCuenta, String contrasena, int tipoCuenta) {
     for (Contructor usuario : usuarios) {
         if (usuario.getNumeroCuenta() == numCuenta && usuario.getContrasena().equals(contrasena) && usuario.getTipoCuenta() == tipoCuenta) {
-            return usuario; // Si encontro el usuario
+            return usuario; 
         }
     }
-    return null; // No encontro el usuario
+    return null; 
 }
     
     public static void agregarUsuarioPorDefecto() {
         // acá creo un usuario "Administrador" con el tipo de cuenta 3
         Contructor usuarioPorDefecto = new Contructor("Admin", "Admin", 00000000, 3, "Florez1");
         
-        // Agregarlo a la lista de usuarios
         usuarios.add(usuarioPorDefecto);
          }
     

@@ -5,6 +5,7 @@
 package View;
 
 import Modelo.Contructor;
+import java.util.List;
 import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
 
@@ -115,9 +116,19 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
     private void btImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btImprimirActionPerformed
 
-    listaUsuarios.addElement(Contructor.mostrarUsuarios());
+     // Obtén la lista de usuarios
+    List<String> usuariosList = Contructor.mostrarUsuarios();
+    
+    // Limpiar el modelo antes de agregar nuevos elementos
+    listaUsuarios.clear();
+
+    // Agregar cada usuario de la lista a la lista en el JList
+    for (String usuario : usuariosList) {
+        listaUsuarios.addElement(usuario);
+    }
+
+    // Establecer el modelo de la lista para el JList
     ltUsuarios.setModel(listaUsuarios);
-        
 
     }//GEN-LAST:event_btImprimirActionPerformed
 
