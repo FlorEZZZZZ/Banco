@@ -4,6 +4,7 @@
  */
 package Controlador;
 
+import Modelo.Contructor;
 import View.Primer_Paso;
 
 /**
@@ -13,6 +14,7 @@ import View.Primer_Paso;
 public class Activador {
     public static void main(String args[]) {
     
+        Contructor.agregarUsuarioPorDefecto();
         Primer_Paso pp = new Primer_Paso();
         pp.setVisible(true);
     
