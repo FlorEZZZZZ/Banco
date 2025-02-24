@@ -76,6 +76,11 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         });
 
         tfNumCuenta.setEnabled(false);
+        tfNumCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNumCuentaActionPerformed(evt);
+            }
+        });
 
         txSaludo1.setText("Saldo");
 
@@ -176,12 +181,15 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btCerrarSesionActionPerformed
 
-    private void mostrarSaldo() {
-    int saldo = Contructor.consultarSaldo(usuarioActual.getNumeroCuenta()); // Consultamos el saldo
-    tfSaldo.setText(String.valueOf(saldo));
-    int numCuenta = Contructor.consultarNumero(usuarioActual.getNumeroCuenta()); // Consultamos el saldo
-    tfNumCuenta.setText(String.valueOf(numCuenta));
-    }
+    private void tfNumCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNumCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNumCuentaActionPerformed
+
+   private void mostrarSaldo() {
+    int[] resultado = Contructor.consultarSaldo(usuarioActual.getNumeroCuenta()); // Consultamos saldo y número de cuenta
+    tfSaldo.setText(String.valueOf(resultado[0]));  // El saldo está en la primera posición
+    tfNumCuenta.setText(String.valueOf(resultado[1]));  // El número de cuenta está en la segunda posición
+}
     
     
     /**

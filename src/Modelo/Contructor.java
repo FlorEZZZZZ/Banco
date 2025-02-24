@@ -107,23 +107,25 @@ public static Contructor validarUsuario(int numCuenta, String contrasena, int ti
     }
 
     public static void agregarUsuarioPorDefecto() {
-        Contructor usuarioPorDefecto = new Contructor("Admin", "Admin", 00000000, 3, "Florez1", 1000000);
+        Contructor usuarioPorDefecto = new Contructor("Admin", "Admin", 12345678, 3, "Florez1", 1000000);
         usuarios.add(usuarioPorDefecto);
     }
 
-    public static int consultarSaldo(int numCuenta) {
-        for (Contructor usuario : usuarios) {
-            if (numCuenta == usuario.getNumeroCuenta()) {
-                return usuario.getSaldo();
-            }
+public static int[] consultarSaldo(int numCuenta) {
+    for (Contructor usuario : usuarios) {
+        if (numCuenta == usuario.getNumeroCuenta()) {
+            // Retorna un arreglo donde el primer valor es el saldo y el segundo el número de cuenta
+            return new int[]{usuario.getSaldo(), usuario.getNumeroCuenta()};
         }
-        return 0;  // Retorna 0 si no se encuentra el usuario
     }
+    return new int[]{0, 0};  // Retorna un arreglo con 0 si no se encuentra el usuario
+}
+
     
     public static int consultarNumero(int numCuenta) {
         for (Contructor usuario : usuarios) {
             if (numCuenta == usuario.getNumeroCuenta()) {
-                return usuario.getNumeroCuenta();
+                return usuario.getSaldo();
             }
         }
         return 0;  // Retorna 0 si no se encuentra el usuario

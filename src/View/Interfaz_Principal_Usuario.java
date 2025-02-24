@@ -130,13 +130,11 @@ public class Interfaz_Principal_Usuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNumCuentaActionPerformed
 
-    private void mostrarSaldo() {
-    int saldo = Contructor.consultarSaldo(usuarioActual.getNumeroCuenta()); // Consultamos el saldo
-    tfSaldo.setText(String.valueOf(saldo));
-    int numCuenta = Contructor.consultarNumero(usuarioActual.getNumeroCuenta()); // Consultamos el saldo
-    tfNumCuenta.setText(String.valueOf(numCuenta));
-    
-    }
+  private void mostrarSaldo() {
+    int[] resultado = Contructor.consultarSaldo(usuarioActual.getNumeroCuenta()); // Consultamos saldo y número de cuenta
+    tfSaldo.setText(String.valueOf(resultado[0]));  // El saldo está en la primera posición
+    tfNumCuenta.setText(String.valueOf(resultado[1]));  // El número de cuenta está en la segunda posición
+}
     /**
      * @param args the command line arguments
      */
