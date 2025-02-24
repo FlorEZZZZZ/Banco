@@ -21,8 +21,8 @@ public class Interfaz_Principal extends javax.swing.JFrame {
     public Interfaz_Principal(Contructor usuario) {
         
         this.usuarioActual = usuario;
-        mostrarSaldo();
         initComponents();
+        mostrarSaldo();
         
         
     }
@@ -146,8 +146,6 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
         Crear_Usuario ca = new Crear_Usuario();
         ca.setVisible(true);
-        this.dispose();
-
     }//GEN-LAST:event_btAgregarActionPerformed
 
     private void btImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btImprimirActionPerformed
