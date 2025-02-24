@@ -119,4 +119,14 @@ public static Contructor validarUsuario(int numCuenta, String contrasena, int ti
         }
         return 0;  // Retorna 0 si no se encuentra el usuario
     }
+    
+    public static int consultarNumero(int numCuenta) {
+        for (Contructor usuario : usuarios) {
+            if (numCuenta == usuario.getNumeroCuenta()) {
+                return usuario.getNumeroCuenta();
+            }
+        }
+        return 0;  // Retorna 0 si no se encuentra el usuario
+    }
+    
 }

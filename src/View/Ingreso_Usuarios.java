@@ -172,7 +172,8 @@ public class Ingreso_Usuarios extends javax.swing.JFrame {
     if (usuarioValidado != null) {        
         // Si el usuario es validado, redirigir a la interfaz correspondiente
         if(tipoCuenta == 3){
-            Interfaz_Principal ip = new Interfaz_Principal();
+            Contructor usuarioEjemplo = new Contructor("Ejemplo", "Ejemplo", 123456, 1, "password", 0);
+            Interfaz_Principal ip = new Interfaz_Principal(usuarioEjemplo);
             ip.setVisible(true);
         } else {
             Interfaz_Principal_Usuario ipu = new Interfaz_Principal_Usuario(usuarioValidado);

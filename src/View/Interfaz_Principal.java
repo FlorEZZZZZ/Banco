@@ -16,10 +16,14 @@ import javax.swing.DefaultListModel;
 public class Interfaz_Principal extends javax.swing.JFrame {
 
    
-    private Contructor usuarios;
+    private Contructor usuarioActual;
     
-    public Interfaz_Principal() {
+    public Interfaz_Principal(Contructor usuario) {
+        
+        this.usuarioActual = usuario;
+        mostrarSaldo();
         initComponents();
+        
         
     }
     DefaultListModel listaUsuarios = new DefaultListModel();
@@ -40,10 +44,13 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ltUsuarios = new javax.swing.JList<>();
         btCerrarSesion = new javax.swing.JButton();
+        tfNumCuenta = new javax.swing.JTextField();
+        txSaludo1 = new javax.swing.JLabel();
+        tfSaldo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txSaludo.setText("-");
+        txSaludo.setText("Numero de Cuenta");
 
         btImprimir.setText("Imprimir Usuarios");
         btImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -68,50 +75,64 @@ public class Interfaz_Principal extends javax.swing.JFrame {
             }
         });
 
+        tfNumCuenta.setEnabled(false);
+
+        txSaludo1.setText("Saldo");
+
+        tfSaldo.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txSaludo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btCerrarSesion)
-                .addGap(18, 18, 18))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 389, Short.MAX_VALUE)
-                        .addComponent(btImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
+                        .addComponent(txSaludo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfNumCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txSaludo1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btCerrarSesion)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 568, Short.MAX_VALUE)
+                                .addComponent(btImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(50, 50, 50))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txSaludo)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txSaludo)
+                        .addComponent(tfNumCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txSaludo1)
+                        .addComponent(tfSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btCerrarSesion))
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +178,14 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btCerrarSesionActionPerformed
 
+    private void mostrarSaldo() {
+    int saldo = Contructor.consultarSaldo(usuarioActual.getNumeroCuenta()); // Consultamos el saldo
+    tfSaldo.setText(String.valueOf(saldo));
+    int numCuenta = Contructor.consultarNumero(usuarioActual.getNumeroCuenta()); // Consultamos el saldo
+    tfNumCuenta.setText(String.valueOf(numCuenta));
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -169,6 +198,9 @@ public class Interfaz_Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<String> ltUsuarios;
+    private javax.swing.JTextField tfNumCuenta;
+    private javax.swing.JTextField tfSaldo;
     private javax.swing.JLabel txSaludo;
+    private javax.swing.JLabel txSaludo1;
     // End of variables declaration//GEN-END:variables
 }
