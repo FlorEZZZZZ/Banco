@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" pref="403" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -49,7 +49,7 @@
                           <Component id="txSaludo1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="tfSaldo" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="463" max="32767" attributes="0"/>
                           <Component id="btCerrarSesion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
@@ -58,7 +58,9 @@
                               <Component id="jScrollPane1" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="btAgregar" min="-2" pref="201" max="-2" attributes="0"/>
-                                  <EmptySpace pref="568" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btAgregarSaldo" min="-2" pref="201" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="btImprimir" min="-2" pref="195" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -81,14 +83,15 @@
                       </Group>
                       <Component id="btCerrarSesion" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="49" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btAgregar" alignment="3" min="-2" pref="103" max="-2" attributes="0"/>
                       <Component id="btImprimir" alignment="3" min="-2" pref="103" max="-2" attributes="0"/>
+                      <Component id="btAgregarSaldo" alignment="3" min="-2" pref="103" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="221" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -159,6 +162,14 @@
           <Properties>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btAgregarSaldo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Agregar Saldo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAgregarSaldoActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

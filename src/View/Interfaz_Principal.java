@@ -8,6 +8,7 @@ import Modelo.Contructor;
 import java.util.List;
 import javax.swing.ButtonModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
    
     private Contructor usuarioActual;
+    public int numeroCuenta;
     
     public Interfaz_Principal(Contructor usuario) {
         
@@ -47,6 +49,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         tfNumCuenta = new javax.swing.JTextField();
         txSaludo1 = new javax.swing.JLabel();
         tfSaldo = new javax.swing.JTextField();
+        btAgregarSaldo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +89,13 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
         tfSaldo.setEnabled(false);
 
+        btAgregarSaldo.setText("Agregar Saldo");
+        btAgregarSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAgregarSaldoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -101,7 +111,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                         .addComponent(txSaludo1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 463, Short.MAX_VALUE)
                         .addComponent(btCerrarSesion)
                         .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -109,7 +119,9 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                             .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 568, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btAgregarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(50, 50, 50))))
         );
@@ -124,13 +136,14 @@ public class Interfaz_Principal extends javax.swing.JFrame {
                         .addComponent(txSaludo1)
                         .addComponent(tfSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btCerrarSesion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                    .addComponent(btImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAgregarSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(155, 155, 155))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,7 +154,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -185,6 +198,31 @@ public class Interfaz_Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNumCuentaActionPerformed
 
+    private void btAgregarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarSaldoActionPerformed
+
+        numeroCuenta = Integer.parseInt(JOptionPane.showInputDialog(null, "Escriba el numero de cuenta" ));
+        
+        
+        
+    }//GEN-LAST:event_btAgregarSaldoActionPerformed
+
+    public class GestorUsuarios {
+    public void mostrarTodosLosUsuarios() {
+        List<Contructor> listaUsuarios = Contructor.getUsuarios(); // Llamamos al método getUsuarios()
+
+        if (listaUsuarios.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay usuarios registrados.");
+        } else {
+            for (Contructor usuario : listaUsuarios) {
+                System.out.println("Nombre: " + usuario.getNombreTitular() +
+                                   ", Apellido: " + usuario.getApellidoTitular() +
+                                   ", Número de Cuenta: " + usuario.getNumeroCuenta());
+            }
+        }
+    }
+}
+    
+    
    private void mostrarSaldo() {
     int[] resultado = Contructor.consultarSaldo(usuarioActual.getNumeroCuenta()); // Consultamos saldo y número de cuenta
     tfSaldo.setText(String.valueOf(resultado[0]));  // El saldo está en la primera posición
@@ -199,6 +237,7 @@ public class Interfaz_Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregar;
+    private javax.swing.JButton btAgregarSaldo;
     private javax.swing.JButton btCerrarSesion;
     private javax.swing.JButton btImprimir;
     private javax.swing.JPanel jPanel1;

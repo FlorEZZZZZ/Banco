@@ -131,4 +131,9 @@ public static int[] consultarSaldo(int numCuenta) {
         return 0;  // Retorna 0 si no se encuentra el usuario
     }
     
+    public static List<Contructor> getUsuarios() {
+    return usuarios;
+}
+
+    
 }
